@@ -15,7 +15,7 @@ public class Main extends BaseClass {
 		homePage.applyFilters();
 		if (homePage.getAvailabilityInfo()) {
 			homePage.takeSnapShot();
-			//send.sendBeep();
+			send.sendBeep();
 		}
 	}
 
