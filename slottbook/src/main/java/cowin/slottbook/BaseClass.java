@@ -20,6 +20,7 @@ public class BaseClass {
 //		System.setProperty("dist", "Jammu");
 //		System.setProperty("age", "18");
 //		System.setProperty("email", "chiranjit.halder@gmail.com");
+//		System.setProperty("doseCategory", "Dose 1");	
 		ChromeOptions options = new ChromeOptions();
 		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 		driver = new ChromeDriver(options);
