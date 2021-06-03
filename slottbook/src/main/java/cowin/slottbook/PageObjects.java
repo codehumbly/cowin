@@ -107,18 +107,23 @@ public class PageObjects extends BaseClass {
 		}
 
 		for (WebElement each : dose1) {
-			String count = each.getAttribute("outerText").replaceAll("\\r\\n|\\r|\\n\\n", "-");
+			String count = each.getAttribute("outerText");
 			dose1Count.add(count);
-			String location = each
-					.findElement(
-							By.xpath("./ancestor::div[contains(@class,'slot-available-main')]/preceding-sibling::div"))
-					.getAttribute("outerText").replaceAll("\\r\\n|\\r|\\n", ",");
-			dose1Location.add(location);
-			if (availability.keySet().contains(location)) {
-				availability.put(location, availability.get(location).toString() + " | " + count);
-			} else {
-				availability.put(location, count);
+			System.out.println(count);
+			if (Integer.parseInt(count.substring(count.indexOf("\n") + 1, count.length()).trim()) > Integer
+					.parseInt(System.getProperty("doseThreshould"))) {
+				String location = each
+						.findElement(By.xpath(
+								"./ancestor::div[contains(@class,'slot-available-main')]/preceding-sibling::div"))
+						.getAttribute("outerText").replaceAll("\\r\\n|\\r|\\n", ",");
+				dose1Location.add(location);
+				if (availability.keySet().contains(location)) {
+					availability.put(location, availability.get(location).toString() + " | " + count);
+				} else {
+					availability.put(location, count);
+				}
 			}
+
 		}
 		if (availability.size() > 0) {
 			return true;

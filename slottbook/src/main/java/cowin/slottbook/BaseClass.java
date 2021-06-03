@@ -18,9 +18,10 @@ public class BaseClass {
 		System.setProperty("webdriver.chrome.driver", sProjectPath + "\\Library\\chromedriver.exe");
 //		System.setProperty("state","Jammu And Kashmir");
 //		System.setProperty("dist", "Jammu");
-//		System.setProperty("age", "18");
+//		System.setProperty("age", "45");
 //		System.setProperty("email", "chiranjit.halder@gmail.com");
-//		System.setProperty("doseCategory", "Dose 1");	
+//		System.setProperty("doseCategory", "Dose 1");
+//		System.setProperty("doseThreshould", "3");
 		ChromeOptions options = new ChromeOptions();
 		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 		driver = new ChromeDriver(options);
