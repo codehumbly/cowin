@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class BaseClass {
 
 	public static WebDriver driver;
-	public static String url = "https://www.cowin.gov.in/home";
+	public static String url = "https://www.cowin.gov.in/";
 	public static String email = System.getProperty("email");
 
 	void initialize() {
