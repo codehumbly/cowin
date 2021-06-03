@@ -11,7 +11,7 @@ public class BaseClass {
 
 	public static WebDriver driver;
 	public static String url = "https://www.cowin.gov.in/home";
-	public static String email = "sanjay.raina@sap.com";
+	public static String email = System.getProperty("email");
 
 	void initialize() {
 		String sProjectPath = System.getProperty("user.dir");

@@ -77,8 +77,8 @@ public class PageObjects extends BaseClass {
 	}
 
 	public void searchByDistrict() throws InterruptedException {
-		String stateName = "Jammu And Kashmir";
-		String districtName = "Jammu";
+		String stateName = System.getProperty("state");
+		String districtName = System.getProperty("dist");
 
 		this.clickOnSearchByDistrict();
 		Thread.sleep(2000);
@@ -89,7 +89,7 @@ public class PageObjects extends BaseClass {
 	}
 
 	public void applyFilters() {
-		WebElement age = driver.findElement(By.xpath("//div[@class='mobile-hide']//label[contains(text(),'Age 18+')]"));
+		WebElement age = driver.findElement(By.xpath("//div[@class='mobile-hide']//label[contains(text(),'Age "+System.getProperty("age")+"+')]"));
 		age.click();
 	}
 
@@ -100,6 +100,8 @@ public class PageObjects extends BaseClass {
 		Set<String> dose1Location = new HashSet<String>();
 		List<String> dose1Count = new ArrayList<String>();
 		Map<String, String> availability = new HashMap<String, String>();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dose1.get(0));
+		Thread.sleep(500);
 		for (WebElement each : dose1) {
 			String count = each.getAttribute("outerText").replaceAll("\\r\\n|\\r|\\n\\n", "-");
 			dose1Count.add(count);
@@ -121,8 +123,6 @@ public class PageObjects extends BaseClass {
 	}
 
 	public void takeSnapShot() throws Exception {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,1000)");
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + "\\homePageScreenshot.png"));

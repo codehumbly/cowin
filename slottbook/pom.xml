@@ -29,6 +29,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
 				<configuration>
 					<encoding>iso-8859-1</encoding>
 					<source>1.8</source>
