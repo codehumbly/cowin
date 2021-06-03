@@ -96,7 +96,7 @@ public class PageObjects extends BaseClass {
 	public boolean getAvailabilityInfo() throws InterruptedException {
 		Thread.sleep(2000);
 		List<WebElement> dose1 = driver
-				.findElements(By.xpath("//div[contains(@class,'dosetotal')]/span[@title='Dose 1']"));
+				.findElements(By.xpath("//div[contains(@class,'dosetotal')]/span[@title='Dose 1' and not(contains(text(),'0'))]"));
 		Set<String> dose1Location = new HashSet<String>();
 		List<String> dose1Count = new ArrayList<String>();
 		Map<String, String> availability = new HashMap<String, String>();
