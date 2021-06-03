@@ -109,7 +109,6 @@ public class PageObjects extends BaseClass {
 		for (WebElement each : dose1) {
 			String count = each.getAttribute("outerText");
 			dose1Count.add(count);
-			System.out.println(count);
 			if (Integer.parseInt(count.substring(count.indexOf("\n") + 1, count.length()).trim()) > Integer
 					.parseInt(System.getProperty("doseThreshould"))) {
 				String location = each
