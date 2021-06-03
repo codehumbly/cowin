@@ -89,19 +89,23 @@ public class PageObjects extends BaseClass {
 	}
 
 	public void applyFilters() {
-		WebElement age = driver.findElement(By.xpath("//div[@class='mobile-hide']//label[contains(text(),'Age "+System.getProperty("age")+"+')]"));
+		WebElement age = driver.findElement(By.xpath(
+				"//div[@class='mobile-hide']//label[contains(text(),'Age " + System.getProperty("age") + "+')]"));
 		age.click();
 	}
 
 	public boolean getAvailabilityInfo() throws InterruptedException {
 		Thread.sleep(2000);
-		List<WebElement> dose1 = driver
-				.findElements(By.xpath("//div[contains(@class,'dosetotal')]/span[@title='Dose 1' and not(contains(text(),'0'))]"));
+		List<WebElement> dose1 = driver.findElements(
+				By.xpath("//div[contains(@class,'dosetotal')]/span[@title='Dose 1' and not(contains(text(),'0'))]"));
 		Set<String> dose1Location = new HashSet<String>();
 		List<String> dose1Count = new ArrayList<String>();
 		Map<String, String> availability = new HashMap<String, String>();
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dose1.get(0));
-		Thread.sleep(500);
+		if (dose1.size() > 0) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dose1.get(0));
+			Thread.sleep(500);
+		}
+
 		for (WebElement each : dose1) {
 			String count = each.getAttribute("outerText").replaceAll("\\r\\n|\\r|\\n\\n", "-");
 			dose1Count.add(count);

@@ -16,6 +16,10 @@ public class BaseClass {
 	void initialize() {
 		String sProjectPath = System.getProperty("user.dir");
 		System.setProperty("webdriver.chrome.driver", sProjectPath + "\\Library\\chromedriver.exe");
+//		System.setProperty("state","Jammu And Kashmir");
+//		System.setProperty("dist", "Jammu");
+//		System.setProperty("age", "18");
+//		System.setProperty("email", "chiranjit.halder@gmail.com");
 		ChromeOptions options = new ChromeOptions();
 		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 		driver = new ChromeDriver(options);
